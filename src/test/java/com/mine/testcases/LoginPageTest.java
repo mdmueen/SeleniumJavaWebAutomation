@@ -17,8 +17,8 @@ public class LoginPageTest {
     public void test1(){
         By txtboxUsername = By.xpath("//input[@placeholder='Username']");
 
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
+        WebDriverManager.chromedriver().setup(); /* WebDriverManager is a class */
+        WebDriver driver = new ChromeDriver(); /* WebDriver is an interface extending SearchContext interface which has findElement & findElements methods. ChromeDriver is a class extending RemoteWebDriver class which implements WebDriver & JavaScriptExecutor interfaces. RemoteWebDriver class has almost all implementations of a driver like getTitle(), get() etc */
         WebDriverWait explicitWait = new WebDriverWait(driver, 10);
 
         driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
