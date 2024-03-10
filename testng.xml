@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Practice Suite">
-    <test thread-count="1" name="Test Basics 1">
+    <test thread-count="1" name="Test Basics 1" parallel="methods">
         <classes>
             <class name="com.mine.tests.LoginPageTest"/>
         </classes>
     </test> <!-- Test -->
+
+    <test name="Regression Test" parallel="methods" thread-count="1" enabled="true">
+        <classes>
+            <class name="com.seleniumEasy.tests.SimpleFormDemoTest"/>
+        </classes>
+    </test>
 </suite> <!-- Suite -->
