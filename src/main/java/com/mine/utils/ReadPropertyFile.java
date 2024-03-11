@@ -16,7 +16,7 @@ public final class ReadPropertyFile {
         try {
             FileInputStream file = new FileInputStream(System.getProperty("user.dir") + "/src/test/resources/utilityFiles/config.properties");
             property.load(file); // this returns HashTable type; in below line we're changing HashTable to HashMap
-            property.entrySet().forEach(entry -> PROPERTIES_MAP.put(String.valueOf(entry.getKey()), String.valueOf(entry.getValue())));
+            property.entrySet().forEach(entry -> PROPERTIES_MAP.put(String.valueOf(entry.getKey()), String.valueOf(entry.getValue()).trim()));
             // in above statement, better to use entrySet() instead of keySet(), as we are accessing keys & values. keySet() can be used if we are accessing only keys
 
             /* another logic instead of using above BiConsumer feature is by using enhanced-For loop, as below
