@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
-public final class SimpleFormDemoPage {
+public final class SimpleFormDemoPage extends BasePage{
 
     private final By textboxEnterValue1 = By.id("value1");
     private final By textboxEnterValue2 = By.id("value2");
@@ -20,27 +20,21 @@ public final class SimpleFormDemoPage {
     }
 
     public SimpleFormDemoPage enterValue1(int value){
-
-        DriverManager.getDriver().findElement(textboxEnterValue1).clear();
-        DriverManager.getDriver().findElement(textboxEnterValue1).sendKeys(String.valueOf(value));
+        textboxSendKeys(textboxEnterValue1, value);
         return this; // achieving method chaining by returning anonymous class object without reference by using - new SimpleFormDemoPage() or by using 'this' keyword
     }
 
     public SimpleFormDemoPage enterValue2(int value){
-        DriverManager.getDriver().findElement(textboxEnterValue2).clear();
-        DriverManager.getDriver().findElement(textboxEnterValue2).sendKeys(String.valueOf(value));
+        textboxSendKeys(textboxEnterValue2, value);
         return this;
     }
 
     public void clickGetTotal(){
-        DriverManager.getDriver().findElement(buttonGetTotal).click();
+        buttonClick(buttonGetTotal);
     }
 
     public String getDisplayTotal(){
-        WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), 10);
-        wait.until(d -> d.findElement(labelTotal).isEnabled()); // using Java 8 Functional programming way
-        //wait.until(ExpectedConditions.visibilityOfElementLocated(labelTotal));
-        return DriverManager.getDriver().findElement(labelTotal).getText();
+        return getTextFromTextbox(labelTotal);
     }
 
 }
